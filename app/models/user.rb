@@ -12,6 +12,11 @@ class User < ApplicationRecord
   	profile.present?
   end
 
+  def name
+  	return email unless profile.first_name and profile.last_name
+  	profile.first_name + " " + profile.last_name
+  end
+
   private
 
   def create_user_profile

@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get 'showcase', to: 'landing#showcase', as: :showcase
   get 'neighbors', to: 'landing#neighbors', as: :neighbors
   get 'help', to: 'landing#help', as: :help
+
+  get 'settings', to: 'settings#index', as: :settings
+
+  resources :profiles, only: [:update]
 end
