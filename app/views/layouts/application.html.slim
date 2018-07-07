@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Project1Vacation
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+  	nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      div.container
+          = link_to "Project1Vacation", root_path, class: 'navbar-brand'
+    	  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+    	    span.navbar-toggler-icon
+    	  #navbarSupportedContent.collapse.navbar-collapse
+    	    ul.navbar-nav.mr-auto
+    	      li.nav-item
+              = link_to "Describe", describe_path, class: 'nav-link'
+    	      li.nav-item
+    	        = link_to "Showcase", showcase_path, class: 'nav-link'
+              li.nav-item
+                = link_to "Neighbors", neighbors_path, class: 'nav-link'
+              li.nav-item
+                = link_to "Help", help_path, class: 'nav-link'
+    	      / li.nav-item.dropdown
+    	        a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+    	          |  Shopping 
+    	        .dropdown-menu[aria-labelledby="navbarDropdown"]
+    	          a.dropdown-item[href="#"]
+    	            | Cart
+    	          a.dropdown-item[href="#"]
+    	            | Wishlist
+    	          .dropdown-divider
+    	          a.dropdown-item[href="#"]
+    	            | Voucher
+    	    div.my-2.my-lg-0
+    	      button.btn.btn-outline-primary.my-2.my-sm-0
+    	        | Login
+
+    br
+
+    div.container
+      = yield
