@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile
+  has_many :friendships
+  has_many :friends, -> { where(friendships: {approved: true}) }, :through => :friendships
 
   after_create :create_user_profile
 
@@ -15,6 +17,14 @@ class User < ApplicationRecord
   def name
   	return email unless profile.first_name and profile.last_name
   	profile.first_name + " " + profile.last_name
+  end
+
+  def friend_requests
+    Friendship.where(friend_id: id, approved: nil)
+  end
+
+  def unfriend(friend_id)
+    Friendship.find_by(user_id: id, friend_id: friend_id).remove
   end
 
   private
